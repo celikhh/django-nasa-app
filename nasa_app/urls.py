@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
+
+# from dashboard.management.views import LoginView
 
 urlpatterns = [
+    path('', RedirectView.as_view(pattern_name='login', permanent=False)),
     path('admin/', admin.site.urls),
     path('', include('dashboard.apod.urls')),
+    path('', include('dashboard.management.urls')),
+    path('', include('dashboard.media_library.urls')),
 ]

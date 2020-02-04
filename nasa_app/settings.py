@@ -59,7 +59,7 @@ ROOT_URLCONF = 'nasa_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['dashboard/templates/apod'],                          #FIX HERE
+        'DIRS': ['dashboard/templates'],                          #FIX HERE
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
