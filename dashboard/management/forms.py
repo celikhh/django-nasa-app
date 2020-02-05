@@ -1,4 +1,9 @@
 from django import forms
+from django.contrib.auth.forms import SetPasswordForm, PasswordChangeForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
 
 
 class LoginForm(forms.Form):
@@ -24,3 +29,16 @@ class RegisterForm(forms.Form):
             "password": password
         }
         return values
+
+
+class UserPasswordChangeForm(SetPasswordForm):
+    username = forms.CharField()
+
+    def save(self):
+        user = super(UserPasswordChangeForm, self).save()
+        user.username = self.cleaned_data['username']
+        user.save()
+        return user
+
+
+

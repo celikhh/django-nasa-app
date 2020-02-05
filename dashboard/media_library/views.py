@@ -18,26 +18,15 @@ from ..services import search_media
 class MediaLibraryView(LoginRequiredMixin, TemplateView):
     template_name = 'media_library.html'
 
-
-    def get_keywordd(request):
-        form = SearchForm(request.POST or None)
-        context = {
-            "form": form
-        }
-
-        if form.is_valid():
-            keyword = form.cleaned_data.get("keyword")
-
-            if keyword is None:
-                messages.info(request, "Kullanıcı Adı veya Parola Hatalı")
-                return render(request, "home_apod.html", context)
-            return keyword
-        # return render(request, "login.html", context)
-
+    # def get_keyword_and_response(self, **kwargs):
+    #     keyword = self.kwargs['str']
+    #     data = search_media(keyword)
+    #     return data
 
     def get_context_data(self, **kwargs):
-        data = search_media(self.keyword)
+        # data = search_media(self.keyword)
+        keyword = self.kwargs['str']
+        datas = search_media(keyword)
         context = super().get_context_data(**kwargs)
-        context['data'] = self.data
+        context['datas'] = datas
         return context
-

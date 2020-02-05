@@ -18,9 +18,13 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 
 # from dashboard.management.views import LoginView
+from django.contrib import admin
+from django.urls import path, include
+
 
 urlpatterns = [
-    path('', RedirectView.as_view(pattern_name='login', permanent=False)),
+    path('', RedirectView.as_view(pattern_name='login', permanent=False)),         #SESSION CONTROL
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('dashboard.apod.urls')),
     path('', include('dashboard.management.urls')),
