@@ -19,10 +19,10 @@ class SignUp(generic.CreateView):
     template_name = 'registration/signup.html'
 
 
-class UserPasswordChangeView(UpdateView):                   #TRY
-    model = User
-    template_name = "registration/change_password.html"
-    form_class = PasswordChangeForm
+# class UserPasswordChangeView(UpdateView):                   #TRY
+#     model = User
+#     # template_name = "registration/change_passwor.html"
+#     form_class = PasswordChangeForm
 
 
 def change_password(request):      #MAKE CLASS BASED

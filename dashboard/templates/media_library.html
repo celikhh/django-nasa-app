@@ -28,7 +28,7 @@
               <h4 class="text-white">About</h4>
               <p class="text-muted">This app shows the photo of the day and the results returned by the searched keyword using the NASA API.</p>
               <h4 class="text-white">User ({{ user.get_username }})</h4>
-              <p><a href="../../">Change Password</a></p>
+              <p><a href="{% url 'password_change' %}">Change Password</a></p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">Contact</h4>
