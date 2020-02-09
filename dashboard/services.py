@@ -1,21 +1,19 @@
 import requests
 
-# h.huseyin33@gmail.com
-from django.shortcuts import render
+from .api_endpoints import API_KEY, apod_url, photo_search_url
 
-API_KEY = 'sesZBXLz2b6ccaECcoeUDMWbuPmOd2BekTOGfkdZ'  # PUT INTO SETTINGS
-url = 'https://api.nasa.gov/planetary/apod?api_key=sesZBXLz2b6ccaECcoeUDMWbuPmOd2BekTOGfkdZ'  # PUT INTO SETTINGS
+apod_final_url = apod_url + API_KEY
 
 
 def get_picture_of_the_day():
-    apod_response = requests.get('https://api.nasa.gov/planetary/apod?api_key=sesZBXLz2b6ccaECcoeUDMWbuPmOd2BekTOGfkdZ')
+    apod_response = requests.get(apod_final_url)
     apod = apod_response.json()
     return apod
 
 
 def search_media(keyword):
     keyword.replace(' ', '%20')
-    search_response = requests.get('https://images-api.nasa.gov/search?q={}&media_type=image'.format(keyword))
+    search_response = requests.get(photo_search_url.format(keyword))
     response = search_response.json()
     item_list = response.get('collection').get('items')  # USE GET FOR EMPTY
     response_list = []
