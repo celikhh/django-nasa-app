@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 class AstronomyPictureOfTheDayView(LoginRequiredMixin, TemplateView):
     template_name = 'home_apod.html'
-    data = get_picture_of_the_day()              #CHECK
+    data = get_picture_of_the_day()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
